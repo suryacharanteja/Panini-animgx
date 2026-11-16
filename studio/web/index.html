@@ -1,0 +1,175 @@
+<!doctype html>
+<!-- SPDX-FileCopyrightText: 2026 Panini-Animgx contributors -->
+<!-- SPDX-License-Identifier: MIT -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f4f7f5" />
+    <title>Panini-Animgx · Local animation studio</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/branding/panini-animgx-icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/branding/panini-animgx-icon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/branding/panini-animgx-icon-64.png" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#brief">Skip to your brief</a>
+    <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z" /></symbol>
+      <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16M3 10h18"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7V5Z"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 6h16M9 6V3h6v3M6 6l1 14h10l1-14M10 10v6M14 10v6"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1"/></symbol>
+      <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
+      <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 8a3 3 0 0 1 6 1c0 2-3 2-3 5M12 17h.01"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7h.01"/></symbol>
+    </svg>
+
+    <header class="app-header">
+      <a class="brand" href="#brief" aria-label="Panini-Animgx Studio home">
+        <img class="brand-lockup" src="/assets/branding/panini-animgx-lockup.png" width="2440" height="640" alt="" />
+        <img class="brand-mark" src="/assets/branding/panini-animgx-icon-128.png" width="128" height="128" alt="" />
+        <span class="brand-compact" aria-hidden="true">Panini<span class="brand-secondary"> / Animgx</span><small>LOCAL ANIMATION STUDIO</small></span>
+      </a>
+      <div class="connection-strip" aria-label="Local service status">
+        <span id="ollamaStatus" class="service-badge checking"><span class="status-dot"></span>Checking Ollama</span>
+        <span id="engineStatus" class="service-badge checking"><span class="status-dot"></span>Checking engine</span>
+        <button id="refreshStatus" class="icon-button refresh-button" type="button" aria-label="Refresh local service status" title="Refresh local service status"><svg class="icon"><use href="#i-refresh"/></svg></button>
+      </div>
+      <span class="local-label"><svg class="icon"><use href="#i-lock"/></svg> On your computer</span>
+      <div class="profile-area"><button id="profileButton" class="profile-button" type="button" aria-label="Open profile and admin settings" aria-expanded="false" aria-controls="profileMenu"><svg class="icon"><use href="#i-person"/></svg><span class="profile-caption">Studio admin</span><svg class="icon profile-chevron"><use href="#i-down"/></svg></button><div id="profileMenu" class="profile-menu" hidden><p>This computer</p><button id="openAdmin" type="button"><svg class="icon"><use href="#i-settings"/></svg>Admin settings</button><button id="openHow" type="button"><svg class="icon"><use href="#i-help"/></svg>How it works</button></div></div>
+    </header>
+
+    <div class="app-shell">
+      <nav class="navigation-rail" aria-label="Studio sections">
+        <a class="rail-link active" href="#brief"><span><svg class="icon"><use href="#i-spark"/></svg></span>Brief</a>
+        <a class="rail-link" href="#storyboard"><span><svg class="icon"><use href="#i-board"/></svg></span>Scenes</a>
+        <a class="rail-link" href="#preview"><span><svg class="icon"><use href="#i-play"/></svg></span>Preview</a>
+        <a class="rail-link" href="#settings"><span><svg class="icon"><use href="#i-settings"/></svg></span>Settings</a>
+        <div class="rail-bottom" aria-hidden="true"><span class="tiny-orbit"></span><small>CREATE<br/>LOCALLY</small></div>
+      </nav>
+
+      <main class="workspace">
+        <div class="workspace-heading">
+          <div><p class="eyebrow">MATH, STORIES &amp; IDEAS IN MOTION</p><h1 id="workspaceTitle">Make mathematics move.</h1><p><span id="workspaceDescription">Plan your own equations, graphs, and proofs. Your local ManimGX engine animates the content you review.</span> <button id="workflowHelp" class="text-button" type="button">See how it works <span aria-hidden="true">↗</span></button></p></div>
+          <ol class="workflow" aria-label="Creation workflow"><li id="stepPlan" class="current"><span>1</span>Plan</li><li id="stepEdit"><span>2</span>Edit</li><li id="stepRender"><span>3</span>Render</li></ol>
+        </div>
+
+        <div id="runtimeNotice" class="notice runtime-notice" role="alert" hidden><span id="runtimeNoticeText"></span></div>
+        <div id="notice" class="notice" role="alert" hidden><span id="noticeText"></span><button id="dismissNotice" class="icon-button" type="button" aria-label="Dismiss message"><svg class="icon"><use href="#i-close"/></svg></button></div>
+
+        <div class="studio-grid">
+          <section id="brief" class="brief-panel surface" aria-labelledby="briefHeading">
+            <div class="panel-heading"><span class="section-number">01</span><h2 id="briefHeading">Start with an idea</h2></div>
+            <form id="briefForm">
+              <label for="prompt">What would you like to make?</label>
+              <textarea id="prompt" name="prompt" rows="7" maxlength="4000" required placeholder="Describe the mathematical concept, equations, and explanation you want to animate…"></textarea>
+              <p class="field-hint">Describe the idea, audience, and feeling. Your chosen model suggests an editable storyboard.</p>
+              <fieldset class="mode-picker"><legend>Video style</legend><label class="mode-option math-mode"><input type="radio" name="mode" value="math" checked/><span><strong>Math / Manim</strong><small>Equations, graphs &amp; proofs</small></span><svg class="icon"><use href="#i-check"/></svg></label><label class="mode-option"><input type="radio" name="mode" value="explainer"/><span><strong>Explainer</strong><small>Ideas made clear</small></span><svg class="icon"><use href="#i-check"/></svg></label><label class="mode-option"><input type="radio" name="mode" value="anime"/><span><strong>Illustrated story</strong><small>Vector scenes &amp; stories</small></span><svg class="icon"><use href="#i-check"/></svg></label></fieldset>
+              <p id="modeHint" class="field-hint mode-hint">Manim-style equations, graphs, geometry, calculus, and vectors, animated by ManimGX.</p>
+              <div class="form-row"><div><label for="duration">Target length</label><select id="duration"><option value="30">30 seconds</option><option value="45">45 seconds</option><option value="60">1 minute</option><option value="90">1½ minutes</option></select><p class="field-hint duration-hint">A guide for planning. Voice-over can extend the final length.</p></div></div>
+              <label for="plannerProvider">Planning provider</label><div class="provider-picker"><select id="plannerProvider" aria-describedby="providerNotice" disabled><option value="ollama">Ollama · local</option><option value="openai">OpenAI</option><option value="gemini">Google Gemini</option><option value="compatible">Other compatible API</option></select><button id="briefAdmin" class="icon-button" type="button" aria-label="Configure planning providers" title="Configure providers"><svg class="icon"><use href="#i-settings"/></svg></button></div>
+              <p id="providerNotice" class="field-hint provider-notice">Ollama keeps your brief on this PC. Video rendering always happens here.</p>
+              <label id="modelLabel" for="model">Ollama model</label><select id="model" aria-describedby="modelHint" disabled><option value="">Checking local models…</option></select>
+              <input id="cloudModel" type="text" maxlength="200" list="cloudModels" aria-describedby="modelHint" placeholder="Model ID" hidden/><datalist id="cloudModels"></datalist>
+              <p id="modelHint" class="field-hint">Connecting to your local Ollama service.</p>
+              <button id="planButton" class="button primary full-width" type="submit" disabled><svg class="icon"><use href="#i-spark"/></svg><span>Plan my video</span><svg class="icon trailing"><use href="#i-arrow"/></svg></button>
+            </form>
+            <div class="project-controls"><button id="newProject" class="button tonal full-width" type="button"><svg class="icon"><use href="#i-plus"/></svg>New project</button><p class="field-hint">Clear this project and start with a blank storyboard.</p></div>
+          </section>
+
+          <section id="storyboard" class="storyboard-panel" aria-labelledby="storyboardHeading">
+            <div class="storyboard-top"><div class="panel-heading"><span class="section-number">02</span><h2 id="storyboardHeading">Your storyboard</h2></div><span id="draftBadge" class="draft-badge">Your draft</span></div>
+            <div id="jobPanel" class="job-panel" role="status" aria-live="polite" hidden><div class="job-heading"><span id="jobTitle">Planning your storyboard</span><span id="jobState">Running</span></div><div id="jobProgress" class="progress-track"><span></span></div><p id="jobMessage"></p></div>
+            <div id="planningSkeleton" class="planning-skeleton" aria-hidden="true" hidden><div><span></span><i></i><i></i></div><div><span></span><i></i><i></i></div></div>
+            <div id="draftContext" class="draft-context" role="status" aria-live="polite" hidden><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p id="draftContextText"></p></div>
+            <form id="editorForm">
+              <label for="planTitle" class="sr-only">Video title</label><input id="planTitle" class="video-title" type="text" required maxlength="120"/>
+              <div class="storyboard-meta"><span><span id="draftStyle">Math / Manim</span><span aria-hidden="true"> · </span><span id="sceneSummary">0 scenes · 0 seconds</span></span><span id="saveStatus"><svg class="icon"><use href="#i-check"/></svg> Draft saved locally</span></div>
+              <div id="scenes" class="scenes"></div>
+              <button id="addScene" class="add-scene" type="button"><svg class="icon"><use href="#i-plus"/></svg>Add a scene<span id="sceneLimit">Up to 8 scenes</span></button>
+            </form>
+            <div class="render-bar"><div><strong>Ready when you are.</strong><p id="renderHint">Review the words and timing, then render your video.</p></div><button id="renderButton" class="button primary" type="button" disabled><svg class="icon"><use href="#i-play"/></svg><span id="renderLabel">Render video</span></button></div>
+          </section>
+
+          <aside class="output-panel">
+            <section id="preview" class="surface preview-panel" aria-labelledby="previewHeading">
+              <div class="panel-heading"><span class="section-number">03</span><h2 id="previewHeading">The screening room</h2></div>
+              <div id="sceneSketch" class="preview-stage"><span id="sketchBadge" class="sketch-badge">SCHEMATIC SKETCH</span><div id="sketchArt" class="sketch-art" aria-hidden="true"></div><span id="sketchTitle" class="sketch-title"></span><span id="sketchIndex" class="sketch-index">00 / 00</span></div>
+              <video id="video" class="video-preview" controls playsinline preload="metadata" hidden aria-label="Rendered animation video"></video>
+              <div id="sketchCaption" class="preview-caption"><strong id="previewTitle"></strong><p id="previewNarration"></p><pre id="sketchMath" class="sketch-math" hidden></pre><small>Schematic of the selected visual. Render to see your equations, curves, animation, and audio.</small></div>
+              <p id="videoCaption" class="video-caption" hidden></p>
+              <a id="downloadVideo" class="button tonal full-width" href="#" download hidden><svg class="icon"><use href="#i-download"/></svg>Download MP4</a>
+              <a id="downloadSubtitles" class="text-button subtitle-download" href="#" download hidden>Download subtitles (.srt)</a>
+              <button id="showSketch" class="text-button" type="button" hidden>Back to scene sketch</button>
+              <button id="showVideo" class="text-button" type="button" hidden>Show rendered video</button>
+            </section>
+
+            <section id="settings" class="surface settings-panel" aria-labelledby="settingsHeading">
+              <div class="panel-heading"><svg class="icon heading-icon"><use href="#i-settings"/></svg><h2 id="settingsHeading">Sound &amp; output</h2></div>
+              <label class="switch-row" for="voiceEnabled"><span><strong>Voice-over</strong><small>Local text-to-speech</small></span><input id="voiceEnabled" class="switch" type="checkbox" checked/></label>
+              <div id="voiceOptions"><label for="voice">Voice</label><select id="voice" aria-describedby="voiceHint"><option value="">Loading local voices…</option></select><p id="voiceHint" class="field-hint">Finding voices installed on this computer.</p></div>
+              <div class="setting-divider"></div>
+              <label class="switch-row" for="musicEnabled"><span><strong>Background music</strong><small>A gentle generated instrumental</small></span><input id="musicEnabled" class="switch" type="checkbox" checked/></label>
+              <div id="musicOptions" class="volume-control"><label for="musicVolume">Music volume <output id="volumeValue" for="musicVolume">18%</output></label><input id="musicVolume" type="range" min="0" max="0.3" step="0.01" value="0.18"/></div>
+              <label for="musicScore">Music score (optional JSON)</label>
+              <textarea id="musicScore" rows="4" maxlength="40000" spellcheck="false" aria-describedby="musicScoreHint musicScoreError" placeholder="Leave empty to compose from this storyboard"></textarea>
+              <p id="musicScoreError" class="field-error" role="status" hidden></p>
+              <p id="musicScoreHint" class="field-hint">Set tempo (40–180 BPM) and chords (arrays of MIDI notes, 36–84). Your model can supply a score; edit it here.</p>
+              <div class="setting-divider"></div>
+              <label for="quality">Render quality</label><select id="quality"><option value="preview">Preview · faster</option><option value="final">Final · higher resolution</option></select>
+              <p class="field-hint">Rendering happens on this PC. Longer scenes and higher quality take more time.</p>
+            </section>
+            <div class="honesty-note"><svg class="icon"><use href="#i-lock"/></svg><p>Your chosen model plans scenes and narration. This repository runs ManimGX to animate them, adds local voice and music, and exports your video.</p></div>
+          </aside>
+        </div>
+        <footer class="workspace-footer"><span>Made for the joy of making.</span><span>Panini-Animgx · ndimensions.AI</span></footer>
+      </main>
+    </div>
+
+    <dialog id="adminDialog" class="studio-dialog" aria-labelledby="adminTitle" aria-describedby="adminDescription">
+      <div class="dialog-heading"><div><p class="eyebrow">STUDIO ADMIN</p><h2 id="adminTitle">Choose your planning model</h2></div><button id="closeAdmin" class="icon-button" type="button" aria-label="Close admin settings"><svg class="icon"><use href="#i-close"/></svg></button></div>
+      <p id="adminDescription" class="dialog-description">The model drafts your storyboard. ManimGX renders the video on your PC.</p>
+      <form id="adminForm">
+        <label for="adminProvider">Provider</label><select id="adminProvider"><option value="ollama">Ollama · local</option><option value="openai">OpenAI</option><option value="gemini">Google Gemini</option><option value="compatible">Other OpenAI-compatible API</option></select>
+        <div id="adminScope" class="scope-note">Local planning on your computer.</div>
+        <label for="adminModel">Model ID</label><input id="adminModel" type="text" maxlength="200" list="adminModels" required autocomplete="off" placeholder="e.g. qwen2.5:3b-instruct"/><datalist id="adminModels"></datalist><p id="adminModelHint" class="field-hint">Use a model installed in Ollama.</p>
+        <div id="baseUrlField" hidden><label for="adminBaseUrl">API base URL</label><input id="adminBaseUrl" type="url" maxlength="2000" placeholder="https://your-provider.example/v1" autocomplete="off"/><p class="field-hint">Use the provider’s OpenAI-compatible base URL, including /v1 when required. A local compatible server can also process planning requests locally.</p></div>
+        <div id="apiKeyField" hidden><label id="adminKeyLabel" for="adminApiKey">API key</label><div class="secret-field"><input id="adminApiKey" type="password" maxlength="4096" autocomplete="off" spellcheck="false" placeholder="Paste a new key, or leave blank to keep it" aria-describedby="keyState keyNotice"/><button id="toggleKey" class="text-button" type="button" aria-label="Show API key" aria-pressed="false">Show</button></div><div class="key-state"><span id="keyState">No key configured</span><button id="clearKey" class="text-button danger" type="button">Clear key</button></div></div>
+        <p id="keyNotice" class="key-notice"><svg class="icon"><use href="#i-lock"/></svg><span>Keys stay in this server’s memory for the current run. Use environment variables to keep them across restarts. Keys are never saved in browser storage.</span></p>
+        <div id="adminFeedback" class="admin-feedback" role="status" aria-live="polite" hidden></div>
+        <div class="dialog-actions"><button id="testProvider" class="button tonal" type="button">Test connection</button><button id="saveProvider" class="button primary" type="submit"><svg class="icon"><use href="#i-check"/></svg><span>Save &amp; use provider</span></button></div>
+      </form>
+    </dialog>
+
+    <dialog id="howDialog" class="studio-dialog how-dialog" aria-labelledby="howTitle">
+      <div class="dialog-heading"><div><p class="eyebrow">FROM AN IDEA TO AN MP4</p><h2 id="howTitle">Your model plans. Your PC animates.</h2></div><button id="closeHow" class="icon-button" type="button" aria-label="Close workflow guide"><svg class="icon"><use href="#i-close"/></svg></button></div>
+      <p class="dialog-description">OpenAI, Gemini, or Ollama help turn your brief into a structured storyboard. The model is optional: you can add and edit your own scenes.</p>
+      <div class="how-steps" aria-label="Explore the video workflow"><button type="button" data-how-step="plan" aria-pressed="true"><span>1</span>Model plans</button><button type="button" data-how-step="review" aria-pressed="false"><span>2</span>You review</button><button type="button" data-how-step="animate" aria-pressed="false"><span>3</span>ManimGX animates</button><button type="button" data-how-step="sound" aria-pressed="false"><span>4</span>PC adds sound</button><button type="button" data-how-step="export" aria-pressed="false"><span>5</span>You export</button></div>
+      <div id="howDetail" class="how-detail" aria-live="polite"><span id="howScope" class="scope-pill">Local or cloud</span><h3 id="howStepTitle">A model turns your idea into scenes</h3><p id="howStepText">It suggests narration, equations, visual choices, colors, and timing. Cloud planning sends your brief to the selected provider and can incur API charges. Ollama runs locally.</p></div>
+      <details class="repo-details"><summary>Where this local repository does the work</summary><dl><dt>Studio interface &amp; provider calls</dt><dd><code>studio/web/</code>, <code>studio/server.py</code>, and <code>studio/providers.py</code></dd><dt>Authored compositions &amp; mathematical animation</dt><dd><code>studio/composition_spec.py</code>, <code>studio/composition_scenes.py</code>, <code>studio/math_scenes.py</code>, and <code>studio/renderer.py</code></dd><dt>Animation engine, GPU drawing &amp; video encoding</dt><dd><code>src/manimgx/</code> and <code>rust/engine/</code></dd><dt>Local audio &amp; exported files</dt><dd>Windows voices, <code>studio/music_spec.py</code> scores, and MP4/subtitles in <code>studio/.data/</code></dd></dl></details>
+      <button id="howDone" class="button primary" type="button">Got it · back to creating</button>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden><svg class="icon"><use href="#i-check"/></svg><span id="toastText"></span></div>
+
+    <template id="sceneTemplate">
+      <article class="scene-card">
+        <div class="scene-card-header"><span class="scene-number"></span><span class="scene-kind"></span><div class="scene-actions"><button class="icon-button move-up" type="button" aria-label="Move scene earlier" title="Move scene earlier"><svg class="icon"><use href="#i-up"/></svg></button><button class="icon-button move-down" type="button" aria-label="Move scene later" title="Move scene later"><svg class="icon"><use href="#i-down"/></svg></button><button class="icon-button remove-scene" type="button" aria-label="Remove scene" title="Remove scene"><svg class="icon"><use href="#i-trash"/></svg></button></div></div>
+        <div class="scene-editor"><button class="scene-thumbnail" type="button"><span class="thumbnail-art" aria-hidden="true"></span><span class="thumbnail-label">Preview</span></button><div class="scene-copy"><label class="sr-only title-label">Scene title</label><input class="scene-title" type="text" required maxlength="100"/><label class="narration-label">Narration</label><textarea class="scene-narration" rows="3" maxlength="600" placeholder="The words your audience will hear…"></textarea></div></div>
+        <div class="scene-controls"><div class="visual-control"><label class="visual-label">Visual</label><select class="scene-visual"><option value="composition">Custom composition</option><optgroup label="Math / Manim"><option value="equation">Equation steps</option><option value="graph">Function graph</option><option value="geometry">Right triangle</option><option value="calculus">Calculus</option><option value="vectors">Vector addition</option></optgroup></select></div><div class="duration-control"><label class="duration-label">Seconds</label><input class="scene-duration" type="number" min="3" max="20" step="any" required/></div><label class="palette-control background-label"><span>Background</span><span class="color-input-wrap"><input class="scene-background" type="color"/><span class="background-value color-value"></span></span></label><label class="palette-control accent-label"><span>Accent</span><span class="color-input-wrap"><input class="scene-accent" type="color"/><span class="accent-value color-value"></span></span></label></div>
+        <fieldset class="math-controls" hidden></fieldset>
+      </article>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E4A3B"/>
+      <stop offset="0.55" stop-color="#072A22"/>
+      <stop offset="1" stop-color="#03130F"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.52" cy="0.46" r="0.5">
+      <stop offset="0" stop-color="#3CFFB4" stop-opacity="0.35"/>
+      <stop offset="0.6" stop-color="#3CFFB4" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#3CFFB4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mark" gradientUnits="userSpaceOnUse" x1="380" y1="230" x2="560" y2="830">
+      <stop offset="0" stop-color="#C6FFE8"/>
+      <stop offset="0.45" stop-color="#4DF5B0"/>
+      <stop offset="1" stop-color="#0FA877"/>
+    </linearGradient>
+    <linearGradient id="orbit" gradientUnits="userSpaceOnUse" x1="140" y1="0" x2="900" y2="0">
+      <stop offset="0" stop-color="#7CFFD0" stop-opacity="0"/>
+      <stop offset="0.7" stop-color="#7CFFD0" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#E6FFF6" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.14"/>
+      <stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="front"><rect x="-200" y="512" width="1424" height="700" transform="rotate(-24 512 512)"/></clipPath>
+    <clipPath id="tile"><rect width="1024" height="1024" rx="232"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#tile)">
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+    <!-- faint tech grid -->
+    <g stroke="#5CFFC2" stroke-opacity="0.05" stroke-width="2">
+      <path d="M128 0V1024M256 0V1024M384 0V1024M512 0V1024M640 0V1024M768 0V1024M896 0V1024"/>
+      <path d="M0 128H1024M0 256H1024M0 384H1024M0 512H1024M0 640H1024M0 768H1024M0 896H1024"/>
+    </g>
+    <circle cx="520" cy="470" r="480" fill="url(#halo)"/>
+
+    <!-- motion orbit (back half) -->
+    <ellipse cx="512" cy="512" rx="400" ry="150" transform="rotate(-24 512 512)"
+             fill="none" stroke="#7CFFD0" stroke-opacity="0.18" stroke-width="6"/>
+
+    <!-- the P -->
+    <g filter="url(#glow)" fill="none" stroke="url(#mark)" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M380 306 V770" stroke-width="128"/>
+      <path d="M380 300 H570 A156 156 0 0 1 570 612 H448" stroke-width="116"/>
+    </g>
+    <!-- play triangle in the counter -->
+    <path d="M478 392 L478 520 L585 456 Z" fill="#EFFFF8" stroke="#EFFFF8"
+          stroke-width="22" stroke-linejoin="round" filter="url(#softglow)"/>
+
+    <!-- motion orbit (front half, passes over the P) -->
+    <ellipse cx="512" cy="512" rx="400" ry="150" transform="rotate(-24 512 512)" clip-path="url(#front)"
+             fill="none" stroke="url(#orbit)" stroke-width="10"/>
+    <circle cx="748" cy="549" r="11" fill="#9CFFDA" fill-opacity="0.8"/>
+    <circle cx="509" cy="675" r="8" fill="#9CFFDA" fill-opacity="0.55"/>
+    <circle cx="271" cy="725" r="6" fill="#9CFFDA" fill-opacity="0.35"/>
+    <circle cx="878" cy="400" r="24" fill="#F2FFF9" filter="url(#softglow)"/>
+
+    <!-- glass sheen + edge -->
+    <rect width="1024" height="1024" fill="url(#sheen)"/>
+  </g>
+  <rect x="3" y="3" width="1018" height="1018" rx="230" fill="none" stroke="#7CFFD0" stroke-opacity="0.22" stroke-width="6"/>
+</svg>
